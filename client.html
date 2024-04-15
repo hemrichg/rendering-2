@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Side Rendering</title>
+</head>
+<body>
+    <input type="number" min="0" step="1" id="source">
+    <h1>Hello, Client Side Rendering List!</h1>
+    <ul id="render"></ul>
+    <script>
+        const render = document.getElementById("render")
+
+        const renderList = (e) => {
+            const count = e.target.valueAsNumber || 0;
+            const range = [...Array(count).keys()];            
+            const content = range.map((id) => `<li>Item ${id+1}</li>`).join('');
+
+            render.innerHTML = content;
+        }
+
+        source.addEventListener("input", renderList);
+    </script>
+</body>
+</html>
